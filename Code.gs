@@ -1,5 +1,6 @@
 // Created By Abhinav Jain 
-
+// https://github.com/abhinav-22-tech/Automatic-Bulk-Email-Sender
+// https://github.com/abhinav-22-tech/Email-track-webhook
 
 const RECIPIENT_COL  = "Recipient";
 const EMAIL_SENT_COL = "Email Sent";
@@ -134,7 +135,7 @@ function startTimeTrigger() {
 //     .everyMinutes(1)
 //     .create();
 //  Logger.log("One");
-  SpreadsheetApp.getActiveSpreadsheet().toast("Your emails are a schedule for every day for a year.","Schedule Email");
+  SpreadsheetApp.getActiveSpreadsheet().toast("Your emails are a schedule for every day.","Schedule Email");
 
 };
 // Created By Abhinav Jain 
