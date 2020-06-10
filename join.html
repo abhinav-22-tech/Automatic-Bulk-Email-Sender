@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #6F717A;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    color: white;
+    /* min-height: 36em; */
+    /*overflow-y: hidden;*/
+}
+
+.container {
+    max-width: 300px;
+    margin-top: 30px;
+    margin-right: 5px;
+    margin-left: 18px;
+    padding: 0 2px 0 2px;
+    flex-grow: 1;    
+   
+}
+
+.full-height-grow {
+    display: flex;
+    flex-direction: row;
+ 
+}
+label {
+  font-weight: bold;
+  margin-right: 20px;
+  padding-left: 12px;
+}
+div .input-group{
+ margin-bottom: 20px;
+}
+div .input-group:last-child {
+  margin-bottom: 0;
+}
+.btn{
+    color:#FFFFFF;
+    background-color: #176287;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    padding:8px 25px 8px 25px;
+    margin-top: 5px;
+    outline: none;
+}
+.btn:focus {
+    background-color: #2796ff;
+}  
+.btn:hover{
+    animation-name: colorful;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+}
+.btnmerge{
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+@keyframes colorful{
+    0%{
+        background-color: #2180d8;
+    }
+    50%{
+        background-color: #661aff;
+    }
+    100%{
+        background-color: #2296ff;
+    }
+}
+.check{
+    width: 19px;
+    height: 19px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.main-footer{
+    height: 4em;
+    background-color: #202027;
+    font-weight: bold;
+    justify-content: space-between;
+    margin-top:200px;
+    flex-direction: column;
+    }
+a {
+    color: inherit;
+    padding: 0.01em;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: #adadad;
+}
+p {
+ color: white;
+ font-weight: bold;
+ border-width: 15px;
+ border-left: 7px solid purple;
+ background-color: #201027;
+ padding-left: 12px;
+ font-size: 16px;
+}
+
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.radio1 {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio1 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio1:hover input ~ .checkmark2 {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio1 input:checked ~ .checkmark2 {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark2:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio1 input:checked ~ .checkmark2:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio1 .checkmark2:after {
+ 	top: 6px;
+	left: 6px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+</style>
+
+<body class="full-height-grow">
+ <div class="container">
+  <section>
+  <form action="">
+  <div class="input-group">
+       <p>Remaining Email Quota</p>
+        <label for=btn2>Email Quota :</label>
+        <button onclick="google.script.run.emailquota()" class="btn">Check</button>
+   </div>
+  <div>
+    <p>Create Email Template</p>
+    <label for="editor" class="radio1">Use a visual editor
+    <input type="radio"  id="editor" name="template" value="editor">
+    <span class="checkmark2"></span>
+    </label>
+    <label for="draft" class="radio1">Use a Gmail Draft
+    <input type="radio" onclick="google.script.run.getDraft()" id="draft" name="template" value="draft">
+    <span class="checkmark2"></span>
+    </label>
+  </div>
+     <p>Enable Email Tracking</p>
+      <div>
+         <label class="checkbox">Track Email Opens
+         <input type="checkbox" checked="checked">
+         <span class="checkmark"></span>
+         </label>
+      </div>
+      <div>
+         <label class="checkbox">Track Link Clicks 
+         <input type="checkbox" checked="checked">
+         <span class="checkmark"></span>
+         </label>
+      </div>
+      
+     <div class="input-group">
+        <p>Schedule Your Email</p>
+        <label for=btn2>Schedule Emails for a year:</label>
+        <button type="submit" onclick="google.script.run.startTimeTrigger()" class="btn">Create</button>
+        <button type="submit" onclick="google.script.run.cancelTimeTrigger()" class="btn">Delete</button>
+     </div>
+     <div>
+       <p>Send Email Campagin</p>
+       <label class="radio1">Send a test email
+       <input type="radio" id="test-email" name="Send" value="test">
+       <span class="checkmark2"></span>
+       </label>
+       <label  class="radio1">Run Mail Merge
+       <input type="radio" id="run-email" name="Send" value="run">
+       <span class="checkmark2"></span>
+       </label>
+     </div>
+     <div>
+        <button name="Send" type="Submit" onclick="data()" class="btnmerge btn">Send</button>
+     </div>
+    </form>
+  </section>
+ </div>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+ </script>
+ <script>
+ function data() {
+  var values = {
+          "Send":$("input[name=Send]:checked").val()
+        };
+        google.script.run.withSuccessHandler().submit(values);
+  };
+ </script>
+ 
+ </body>
+
+</html>
+
+
+
