@@ -5,7 +5,7 @@ The project support to busy people who want to save time to send many emails to 
 
 # Features
 
-1.  Easily send bulk emails
+1.  Easily send bulk emails through google spreadsheets
 2.  Scheduling the emails
 3.  Track email to check it is open or not
 4.  Check remaining email send quotas
