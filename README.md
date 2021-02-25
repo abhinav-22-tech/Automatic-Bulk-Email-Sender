@@ -11,5 +11,6 @@ The project support to busy people who want to save time to send many emails to 
 2.  Scheduling the emails
 3.  Track email to check it is open or not
 4.  Check remaining email send quotas
-5.  Get an email from draft using the email’s subject
-6.  To minimize the time and efficiently maintain the data.
+5.  Get a name of email from draft
+6.  Use rich-text-editor to write an email
+7.  To minimize the time and efficiently maintain the data
