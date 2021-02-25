@@ -188,7 +188,8 @@ function getTrackingGIF() {
   // that will pass the Subject and the To line of the email to the web app. Replace [WEBAPP URL] below with the URL of your web app
 
 //  var imgURL = "https://script.google.com/macros/s/AKfycbxpAxLtsIhtBuJqbvhTDWe02N3AQNmApCa0gaz40Qo0k-rBtjbY/exec"
-  var imgURL = "https://script.google.com/macros/s/AKfycbwQtPFF4Q8tkNkHDhN11O-IjTenlETHvmO8RyhA8Q/exec"
+  var imgURL = "Enter your email track web hook URL"
+  //https://github.com/abhinav-22-tech/Email-track-webhook
     // encode the Subject to assure that it will be passed properly as a part of a URL 
     + "?esubject=" + encodeURIComponent(subject.replace(/'/g, ""))
     // encode the To line to assure that it will be passed properly as a part of a URL
@@ -399,7 +400,7 @@ function sendEmails(subjectLine, sheet=SpreadsheetApp.getActiveSheet()) {
 
 function emailValidation()
 { 
-  var apikey = 'da33077c93b5444286a91dfb5111628e'
+  var apikey = 'Enter your API Key(available at gammalogic.com)'
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getActiveSheet();
   count = sheet.getLastRow();
