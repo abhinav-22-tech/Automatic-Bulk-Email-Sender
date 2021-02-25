@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <script>
+    function onSuccess(a){
+      var div = document.getElementById('output');
+      var html = '';
+      for(let i = 0; i < a.length; i++){
+        if(a[i] !== null){
+         html = html + '<option value=' + i + '>' + a[i] + '</option>';
+         }
+      }
+      div.innerHTML =  '<select name="draft" id="draft" >' + html + '</select>';
+                        
+    }
+     google.script.run.withSuccessHandler(onSuccess)
+          .getAllDrafts();
+    </script>
+  </head>
+  <body>
+
+    <form action="">
+      <label for="draft">Select one of the draft:</label>
+      <br>
+      <div id="output"></div>
+      <p>Create a campaign by using a Gmail draft as a template for Mail Merge.</p>
+      <button name="Submit" type="Submit" onclick="data()">Submit</button>
+      <button onclick="cancel()">Cancel</button>
+    </form>
+     <script>
+    function data() {
+       var nameValue = document.getElementById("draft").value;
+       google.script.run.withSuccessHandler().submitDraftSubject(nameValue);
+       close();
+   }
+   function cancel(){
+      close();
+    }
+    function close() {
+            google.script.host.close();
+    }
+ </script>
+  </body>
+</html>

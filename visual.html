@@ -1,0 +1,2460 @@
+<html>
+
+<head>
+    <style type="text/css">
+        .uploadcare--jcrop-handle {
+            box-sizing: border-box;
+            padding: 12.5px;
+            width: 45px;
+            height: 45px;
+            background: transparent;
+            z-index: 2147483621
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--jcrop-handle {
+                height: 35px;
+                width: 35px;
+                padding: 10px
+            }
+        }
+
+        .uploadcare--jcrop-handle:before {
+            content: "";
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .2);
+            border-radius: 50%
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--jcrop-handle:before {
+                height: 15px;
+                width: 15px
+            }
+        }
+
+        .uploadcare--jcrop-handle.ord-nw {
+            margin-top: -22.5px;
+            margin-left: -22.5px;
+            top: 0;
+            left: 0
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--jcrop-handle.ord-nw {
+                margin-left: -17.5px;
+                margin-top: -17.5px
+            }
+        }
+
+        .uploadcare--jcrop-handle.ord-ne {
+            margin-top: -22.5px;
+            margin-right: -22.5px;
+            top: 0;
+            right: 0
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--jcrop-handle.ord-ne {
+                margin-right: -17.5px;
+                margin-top: -17.5px
+            }
+        }
+
+        .uploadcare--jcrop-handle.ord-se {
+            margin-bottom: -22.5px;
+            margin-right: -22.5px;
+            bottom: 0;
+            right: 0
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--jcrop-handle.ord-se {
+                margin-right: -17.5px;
+                margin-bottom: -17.5px
+            }
+        }
+
+        .uploadcare--jcrop-handle.ord-sw {
+            margin-bottom: -22.5px;
+            margin-left: -22.5px;
+            bottom: 0;
+            left: 0
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--jcrop-handle.ord-sw {
+                margin-left: -17.5px;
+                margin-bottom: -17.5px
+            }
+        }
+
+        .uploadcare--jcrop-hline {
+            width: 100%;
+            height: 1px !important;
+            background-color: #fff;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, .2);
+            z-index: 2147483620
+        }
+
+        .uploadcare--jcrop-hline.bottom {
+            bottom: 0
+        }
+
+        .uploadcare--jcrop-vline {
+            width: 1px !important;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, .2);
+            z-index: 2147483620
+        }
+
+        .uploadcare--jcrop-vline.right {
+            right: 0
+        }
+
+        .uploadcare--jcrop-tracker {
+            height: 100%;
+            width: 100%;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .uploadcare--jcrop-holder img {
+            max-width: none;
+            max-height: none
+        }
+
+        .uploadcare--text {
+            margin: 0 0 10px;
+            padding: 0;
+            font-size: 17.5px;
+            line-height: 25px
+        }
+
+        .uploadcare--text:empty {
+            display: none
+        }
+
+        .uploadcare--text_muted {
+            color: #a4a2a1
+        }
+
+        .uploadcare--text_pre {
+            box-sizing: border-box;
+            overflow-x: auto;
+            padding: 20px;
+            max-width: 100%;
+            background: #e3e1e1;
+            font-family: monospace;
+            white-space: pre;
+            text-align: left
+        }
+
+        .uploadcare--text_size_small {
+            font-size: 15px;
+            line-height: 20px
+        }
+
+        .uploadcare--text_size_medium {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px
+        }
+
+        .uploadcare--text_size_large {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 25px
+        }
+
+        .uploadcare--text_size_extra-large {
+            font-size: 35px;
+            line-height: 45px
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--text_size_extra-large {
+                font-size: 42.5px;
+                line-height: 50px
+            }
+        }
+
+        .uploadcare--icon {
+            all: initial;
+            color: inherit;
+            fill: currentColor;
+            margin: 0;
+            padding: 0;
+            max-width: 100%;
+            width: 32px;
+            height: 32px;
+            cursor: inherit
+        }
+
+        .uploadcare--link,
+        .uploadcare--link:link,
+        .uploadcare--link:visited {
+            cursor: pointer;
+            color: #157cfc;
+            text-decoration: underline
+        }
+
+        .uploadcare--link:focus,
+        .uploadcare--link:hover {
+            color: #3891ff;
+            text-decoration: none
+        }
+
+        .uploadcare--link:focus {
+            outline: 2px solid rgba(21, 124, 252, .5);
+            outline-offset: 1px
+        }
+
+        .uploadcare--link:active {
+            color: #0969ee
+        }
+
+        .uploadcare--button {
+            all: initial;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            display: inline-block;
+            overflow: hidden;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 10px;
+            width: auto;
+            min-width: 100px;
+            height: auto;
+            min-height: 0;
+            border-radius: 6px;
+            border: 1px solid #157cfc;
+            background: transparent;
+            color: #157cfc;
+            cursor: default;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-align: center;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 400;
+            font-style: normal;
+            line-height: 20px;
+            box-shadow: none;
+            text-shadow: none;
+            transition: background .3s, color .3s, border .3s
+        }
+
+        .uploadcare--button svg {
+            pointer-events: none
+        }
+
+        .uploadcare--button:focus,
+        .uploadcare--button:hover {
+            background: transparent;
+            border-color: #3891ff;
+            color: #3891ff;
+            font-weight: 400;
+            font-style: normal;
+            box-shadow: none;
+            text-shadow: none
+        }
+
+        .uploadcare--button:focus {
+            outline: 2px solid rgba(21, 124, 252, .5);
+            outline-offset: 1px
+        }
+
+        .uploadcare--button:active {
+            border-color: #0969ee;
+            color: #0969ee
+        }
+
+        .uploadcare--button:disabled,
+        .uploadcare--button[aria-disabled=true] {
+            background: transparent !important;
+            border-color: #d4d2d2 !important;
+            color: #d4d2d2 !important;
+            cursor: not-allowed
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--button {
+                padding: 10px 20px;
+                font-size: 17.5px;
+                line-height: 25px
+            }
+        }
+
+        .uploadcare--button_icon {
+            padding: 14px;
+            min-width: 0;
+            width: 60px;
+            height: 60px
+        }
+
+        .uploadcare--button_muted {
+            border-color: transparent !important;
+            color: #a4a2a1;
+            border-radius: 0
+        }
+
+        .uploadcare--button_muted:focus,
+        .uploadcare--button_muted:hover {
+            color: #157cfc
+        }
+
+        .uploadcare--button_muted:disabled,
+        .uploadcare--button_muted[aria-disabled=true] {
+            border-color: transparent !important
+        }
+
+        .uploadcare--button_overlay {
+            background: rgba(53, 53, 53, .5);
+            border-color: transparent;
+            color: #fff
+        }
+
+        .uploadcare--button_overlay:focus,
+        .uploadcare--button_overlay:hover {
+            background: hsla(0, 0%, 40%, .5);
+            border-color: transparent;
+            color: #fff
+        }
+
+        .uploadcare--button_overlay:active {
+            background: rgba(33, 33, 33, .5)
+        }
+
+        .uploadcare--button_primary {
+            background: #157cfc;
+            border-color: #157cfc;
+            color: #fff
+        }
+
+        .uploadcare--button_primary:focus,
+        .uploadcare--button_primary:hover {
+            background: #3891ff;
+            border-color: #3891ff;
+            color: #fff
+        }
+
+        .uploadcare--button_primary:active {
+            background: #0969ee;
+            border-color: #0969ee
+        }
+
+        .uploadcare--button_primary:disabled,
+        .uploadcare--button_primary[aria-disabled=true] {
+            background: #d4d2d2 !important;
+            border-color: #d4d2d2 !important;
+            color: #fff !important
+        }
+
+        .uploadcare--button_size_big {
+            padding: 10px 25px;
+            font-size: 20px;
+            line-height: 30px
+        }
+
+        .uploadcare--button_size_small {
+            padding: 5px 10px;
+            min-width: 80px;
+            font-size: 15px;
+            line-height: 20px
+        }
+
+        .uploadcare--input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            display: block;
+            box-sizing: border-box;
+            margin: 5px 0 15px;
+            padding: 10px 15px;
+            width: 100%;
+            font-size: 17.5px;
+            line-height: 25px;
+            background: #fff;
+            color: #353535;
+            border: 1px solid #a4a2a1;
+            border-radius: 2px;
+            box-shadow: none
+        }
+
+        .uploadcare--input:focus {
+            outline: 2px solid rgba(21, 124, 252, .5);
+            outline-offset: 1px
+        }
+
+        .uploadcare--input::-webkit-input-placeholder {
+            color: #a4a2a1
+        }
+
+        .uploadcare--input::-ms-input-placeholder {
+            color: #a4a2a1
+        }
+
+        .uploadcare--input::placeholder {
+            color: #a4a2a1
+        }
+
+        .uploadcare--form {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -ms-flex-align: center;
+            align-items: center;
+            box-sizing: border-box;
+            max-width: 400px;
+            width: 100%
+        }
+
+        .uploadcare--error {
+            color: #e66a6a
+        }
+
+        .uploadcare--powered-by {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 7.5px 0;
+            font-size: 12.5px;
+            line-height: 15px;
+            color: #fff;
+            text-align: center
+        }
+
+        .uploadcare--powered-by__link {
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            color: inherit !important;
+            text-decoration: none !important
+        }
+
+        .uploadcare--powered-by__logo {
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            width: 20px;
+            height: 15px;
+            vertical-align: text-bottom
+        }
+
+        .uploadcare--progress__canvas {
+            width: 100%;
+            height: 100%
+        }
+
+        .uploadcare--progress__text {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 60%;
+            line-height: 1
+        }
+
+        .uploadcare--progress__text-container {
+            width: 100%;
+            height: 100%;
+            display: table;
+            white-space: normal
+        }
+
+        .uploadcare--progress_type_canvas {
+            padding: 2px;
+            width: 32px;
+            height: 32px;
+            color: #ffd800;
+            border-color: #e3e1e1
+        }
+
+        .uploadcare--progressbar {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            background: #e3e1e1;
+            border-radius: 6px
+        }
+
+        .uploadcare--progressbar__value {
+            width: 0;
+            height: 100%;
+            background: #ffd800
+        }
+
+        .uploadcare--menu {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            width: 100%;
+            width: 100vw;
+            max-width: 100%;
+            height: 100%;
+            overflow: hidden
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--menu {
+                width: 60px
+            }
+        }
+
+        @media (max-width:759px) {
+            .uploadcare--menu {
+                height: 60px
+            }
+        }
+
+        .uploadcare--menu__icon {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            margin: 14px
+        }
+
+        @media (max-width:759px) {
+            .uploadcare--menu:not(.uploadcare--menu_opened) .uploadcare--menu__item_current:not(.uploadcare--menu__item_tab_file) .uploadcare--menu__icon {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-left: 0
+            }
+        }
+
+        .uploadcare--menu__item {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 100vw;
+            height: 60px;
+            overflow: hidden;
+            cursor: default;
+            background: #e3e1e1;
+            color: #666;
+            transition: background .3s, color .3s
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--menu__item {
+                width: 60px
+            }
+        }
+
+        .uploadcare--menu__item:focus,
+        .uploadcare--menu__item:hover {
+            color: #157cfc
+        }
+
+        .uploadcare--menu__item:active {
+            background-color: #fff;
+            color: #0969ee
+        }
+
+        .uploadcare--menu__item:focus {
+            outline: none;
+            box-shadow: inset 0 0 0 2px rgba(21, 124, 252, .5)
+        }
+
+        .uploadcare--menu__item[aria-disabled=true] {
+            background: #e3e1e1 !important;
+            color: #666 !important;
+            cursor: not-allowed
+        }
+
+        .uploadcare--menu__item:after {
+            content: attr(title);
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            display: -ms-flexbox;
+            display: flex;
+            height: 30px;
+            font-size: 17px;
+            line-height: 30px;
+            white-space: nowrap
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--menu__item:after {
+                overflow: hidden;
+                max-width: 170px;
+                text-overflow: ellipsis
+            }
+        }
+
+        .uploadcare--menu__item_current,
+        .uploadcare--menu__item_current:active,
+        .uploadcare--menu__item_current:focus,
+        .uploadcare--menu__item_current:hover {
+            background-color: #fff;
+            color: #353535
+        }
+
+        .uploadcare--menu__item_hidden {
+            display: none
+        }
+
+        .uploadcare--menu__items {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            padding-right: 100vw;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: #e3e1e1
+        }
+
+        .uploadcare--menu__toggle {
+            width: 60px;
+            height: 60px;
+            transition: none
+        }
+
+        .uploadcare--menu__toggle:focus {
+            outline-offset: -2px
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--menu__toggle {
+                display: none
+            }
+        }
+
+        @media (max-width:759px) {
+            .uploadcare--menu:not(.uploadcare--menu_opened) .uploadcare--menu__toggle-icon_back {
+                display: none
+            }
+        }
+
+        @media (max-width:759px) {
+            .uploadcare--menu_opened {
+                position: relative;
+                z-index: 1000;
+                height: 100%
+            }
+
+            .uploadcare--menu_opened .uploadcare--menu__toggle {
+                -ms-flex-pack: start;
+                justify-content: flex-start;
+                width: 100%;
+                text-align: left;
+                background: #e3e1e1
+            }
+
+            .uploadcare--menu_opened .uploadcare--menu__toggle-icon_menu {
+                display: none
+            }
+
+            .uploadcare--menu_opened .uploadcare--menu__items {
+                height: calc(100% - 60px)
+            }
+        }
+
+        .uploadcare--footer {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -ms-flex-align: center;
+            align-items: center;
+            box-sizing: border-box;
+            width: 100%;
+            margin-top: 10px;
+            padding: 5px 20px 15px
+        }
+
+        @media (max-width:759px) and (orientation:portrait) {
+            .uploadcare--footer {
+                display: block
+            }
+        }
+
+        .uploadcare--footer:empty {
+            display: none
+        }
+
+        .uploadcare--footer__additions {
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            -ms-flex-order: 1;
+            order: 1;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-align: center;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 0 0 15px;
+            text-align: center
+        }
+
+        @media (max-width:759px) and (orientation:landscape) {
+            .uploadcare--footer__additions {
+                padding: 0 20px
+            }
+        }
+
+        @media (max-width:500px) and (orientation:landscape) {
+            .uploadcare--footer__additions {
+                display: none
+            }
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--footer__additions {
+                padding: 0 20px
+            }
+        }
+
+        .uploadcare--footer__additions:empty {
+            visibility: hidden;
+            padding: 0
+        }
+
+        .uploadcare--footer__button {
+            margin-top: 5px;
+            margin-bottom: 5px
+        }
+
+        .uploadcare--footer__button:first-of-type {
+            -ms-flex-order: 0;
+            order: 0
+        }
+
+        .uploadcare--footer__button:nth-of-type(2) {
+            -ms-flex-order: 2;
+            order: 2
+        }
+
+        @media (max-width:759px) {
+            .uploadcare--footer__button {
+                max-width: calc(50% - 20px)
+            }
+        }
+
+        @media (max-width:759px) and (orientation:portrait) {
+            .uploadcare--footer__button:first-of-type {
+                float: left
+            }
+
+            .uploadcare--footer__button:nth-of-type(2) {
+                float: right
+            }
+        }
+
+        .uploadcare--dragging .uploadcare--draganddrop {
+            margin: 20px;
+            background: #e3e1e1;
+            color: #a4a2a1;
+            border: 2px dashed;
+            border-radius: 20px
+        }
+
+        .uploadcare--draganddrop.uploadcare--dragging {
+            color: #157cfc !important
+        }
+
+        @media (max-width:759px) {
+            .uploadcare--draganddrop__title {
+                display: none
+            }
+        }
+
+        .uploadcare--draganddrop:not(.uploadcare--draganddrop_supported) .uploadcare--draganddrop__supported,
+        .uploadcare--draganddrop_supported .uploadcare--draganddrop__not-supported,
+        .uploadcare--dragging .uploadcare--dialog__close,
+        .uploadcare--dragging__show {
+            display: none
+        }
+
+        .uploadcare--dragging .uploadcare--dragging__show {
+            display: block
+        }
+
+        .uploadcare--dragging .uploadcare--dragging__hide {
+            display: none
+        }
+
+        .uploadcare--file {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -ms-flex-align: stretch;
+            align-items: stretch;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding: 5px 0 5px 20px;
+            color: #353535;
+            cursor: default
+        }
+
+        .uploadcare--file:hover {
+            background: rgba(21, 124, 252, .1)
+        }
+
+        .uploadcare--file__description {
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            min-width: 0;
+            padding-right: 20px;
+            text-align: left
+        }
+
+        .uploadcare--file__description:focus,
+        .uploadcare--file__description:focus .uploadcare--file__preview,
+        .uploadcare--file__description:hover,
+        .uploadcare--file__description:hover .uploadcare--file__preview {
+            color: #157cfc
+        }
+
+        .uploadcare--file__description:active,
+        .uploadcare--file__description:active .uploadcare--file__preview {
+            color: #0969ee
+        }
+
+        .uploadcare--file__description:focus {
+            outline: 2px solid rgba(21, 124, 252, .5);
+            outline-offset: 2px
+        }
+
+        .uploadcare--file__icon {
+            max-width: 100%;
+            max-height: 100%
+        }
+
+        .uploadcare--file__name {
+            overflow: hidden;
+            margin: 0;
+            max-width: calc(100vw - 200px);
+            line-height: 25px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            transition: color .3s
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--file__name {
+                max-width: 350px
+            }
+        }
+
+        .uploadcare--file__preview {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            float: left;
+            box-sizing: border-box;
+            margin-right: 10px;
+            padding: 2px;
+            width: 60px;
+            height: 60px;
+            overflow: hidden;
+            border: 1px solid;
+            border-radius: 6px;
+            background: transparent;
+            color: #e3e1e1;
+            transition: border .3s
+        }
+
+        .uploadcare--file__progressbar {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            -ms-flex-item-align: center;
+            align-self: center;
+            margin: 0 10px;
+            width: 60px;
+            height: 10px
+        }
+
+        .uploadcare--file__size {
+            font-size: 12.5px;
+            color: #a4a2a1
+        }
+
+        .uploadcare--file_status_error,
+        .uploadcare--file_status_error .uploadcare--file__description,
+        .uploadcare--file_status_error .uploadcare--file__preview {
+            color: #e66a6a !important
+        }
+
+        .uploadcare--file_status_error .uploadcare--file__name {
+            color: hsla(0, 71%, 66%, .5) !important
+        }
+
+        .uploadcare--file_status_error .uploadcare--file__progressbar,
+        .uploadcare--file_status_error .uploadcare--file__size,
+        .uploadcare--file_status_uploaded .uploadcare--file__progressbar {
+            display: none
+        }
+
+        .uploadcare--file_status_uploading,
+        .uploadcare--file_status_uploading .uploadcare--file__description {
+            color: #353535 !important
+        }
+
+        .uploadcare--file_status_uploading .uploadcare--file__name {
+            max-width: calc(100vw - 280px)
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--file_status_uploading .uploadcare--file__name {
+                max-width: 270px
+            }
+        }
+
+        .uploadcare--file_status_uploading .uploadcare--file__preview {
+            background: #ffd800;
+            color: #ffd800 !important
+        }
+
+        .uploadcare--files {
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            overflow: auto;
+            width: 100%;
+            height: 100%
+        }
+
+        .uploadcare--files__item {
+            -ms-flex-negative: 0;
+            flex-shrink: 0
+        }
+
+        .uploadcare--crop-sizes {
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: distribute;
+            justify-content: space-around
+        }
+
+        .uploadcare--crop-sizes__item {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 0;
+            height: 65px;
+            background: transparent;
+            border-color: transparent;
+            color: #353535
+        }
+
+        .uploadcare--crop-sizes__item:focus,
+        .uploadcare--crop-sizes__item:hover {
+            background: transparent;
+            border-color: transparent;
+            color: #157cfc
+        }
+
+        .uploadcare--crop-sizes__item:active {
+            background: transparent;
+            border-color: transparent;
+            color: #0969ee
+        }
+
+        .uploadcare--crop-sizes__item:disabled,
+        .uploadcare--crop-sizes__item[aria-disabled=true] {
+            border-color: transparent !important
+        }
+
+        .uploadcare--crop-sizes__item:after {
+            content: attr(data-caption);
+            display: block;
+            font-size: 14px;
+            line-height: 25px;
+            text-transform: uppercase
+        }
+
+        @media (max-width:400px),
+        (max-width:600px) and (orientation:landscape) {
+            .uploadcare--crop-sizes__item:after {
+                font-size: 12px
+            }
+        }
+
+        .uploadcare--crop-sizes__item:before {
+            content: "";
+            display: block;
+            -ms-flex-order: 1;
+            order: 1;
+            margin: 1px 0;
+            width: 6px;
+            height: 6px;
+            background: transparent;
+            border-radius: 50%
+        }
+
+        .uploadcare--crop-sizes__item_current:active,
+        .uploadcare--crop-sizes__item_current:focus,
+        .uploadcare--crop-sizes__item_current:hover {
+            color: #353535
+        }
+
+        .uploadcare--crop-sizes__item_current:before {
+            background: #157cfc
+        }
+
+        .uploadcare--crop-sizes__icon {
+            box-sizing: border-box;
+            width: 30px;
+            height: 30px;
+            border: 2px solid;
+            border-radius: 2px;
+            color: inherit;
+            transform: scale(.666)
+        }
+
+        .uploadcare--crop-sizes__icon_free {
+            border: none;
+            border-radius: 0;
+            transform: none
+        }
+
+        .uploadcare--file-source {
+            margin: 10px;
+            border-color: #e3e1e1;
+            background: #e3e1e1;
+            color: #353535
+        }
+
+        .uploadcare--file-source_all {
+            -ms-flex-order: 1;
+            order: 1;
+            border-color: currentColor;
+            background: transparent;
+            color: #157cfc
+        }
+
+        .uploadcare--file-sources {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 100%
+        }
+
+        @media (max-width:759px) and (max-height:450px),
+        (min-width:760px) {
+            .uploadcare--file-sources {
+                display: none
+            }
+        }
+
+        .uploadcare--file-sources__caption {
+            margin: 15px 0 5px
+        }
+
+        @media (max-width:759px) and (max-height:550px) {
+
+            .uploadcare--file-sources__item:nth-child(4),
+            .uploadcare--file-sources__item:nth-child(5),
+            .uploadcare--file-sources__item:nth-child(6) {
+                display: none
+            }
+        }
+
+        .uploadcare--file-sources__items {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -ms-flex-pack: center;
+            justify-content: center;
+            max-width: 300px
+        }
+
+        .uploadcare--file-sources__items:empty,
+        .uploadcare--file-sources__items:not(.uploadcare--file-sources__items_many) .uploadcare--file-source__all {
+            display: none
+        }
+
+        .uploadcare--media {
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: relative;
+            width: 100%
+        }
+
+        .uploadcare--media__image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            max-width: 100%;
+            max-height: 100%;
+            transform: translateX(-50%) translateY(-50%)
+        }
+
+        .uploadcare--media__video {
+            all: initial;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            min-height: 100px;
+            max-height: 100%
+        }
+
+        @media (max-width:759px) and (max-height:379px) {
+            .uploadcare--media__video {
+                max-height: 120px
+            }
+        }
+
+        @media (max-width:759px) and (min-height:380px) and (max-height:499px) {
+            .uploadcare--media__video {
+                max-height: 160px
+            }
+        }
+
+        @media (max-width:759px) and (min-height:500px),
+        (min-width:760px) {
+            .uploadcare--media__video {
+                max-height: 300px
+            }
+        }
+
+        .uploadcare--camera__button {
+            margin: 5px 10px
+        }
+
+        .uploadcare--camera__button_type_mirror {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            margin: 0;
+            transform: translateX(-50%)
+        }
+
+        .uploadcare--camera__video {
+            transition: transform .8s cubic-bezier(.23, 1, .32, 1)
+        }
+
+        .uploadcare--camera__video_mirrored {
+            transform: scaleX(-1)
+        }
+
+        .uploadcare--camera__video-container {
+            -ms-flex-positive: 0;
+            flex-grow: 0;
+            position: relative;
+            margin-bottom: 10px
+        }
+
+        .uploadcare--camera_status_denied .uploadcare--camera__button_type_cancel-record,
+        .uploadcare--camera_status_denied .uploadcare--camera__button_type_capture,
+        .uploadcare--camera_status_denied .uploadcare--camera__button_type_mirror,
+        .uploadcare--camera_status_denied .uploadcare--camera__button_type_start-record,
+        .uploadcare--camera_status_denied .uploadcare--camera__button_type_stop-record,
+        .uploadcare--camera_status_denied .uploadcare--camera__controls,
+        .uploadcare--camera_status_denied .uploadcare--camera__not-found,
+        .uploadcare--camera_status_denied .uploadcare--camera__please-allow,
+        .uploadcare--camera_status_denied .uploadcare--camera__video-container,
+        .uploadcare--camera_status_not-founded .uploadcare--camera__button_type_cancel-record,
+        .uploadcare--camera_status_not-founded .uploadcare--camera__button_type_capture,
+        .uploadcare--camera_status_not-founded .uploadcare--camera__button_type_mirror,
+        .uploadcare--camera_status_not-founded .uploadcare--camera__button_type_retry,
+        .uploadcare--camera_status_not-founded .uploadcare--camera__button_type_start-record,
+        .uploadcare--camera_status_not-founded .uploadcare--camera__button_type_stop-record,
+        .uploadcare--camera_status_not-founded .uploadcare--camera__controls,
+        .uploadcare--camera_status_not-founded .uploadcare--camera__please-allow,
+        .uploadcare--camera_status_not-founded .uploadcare--camera__video-container,
+        .uploadcare--camera_status_ready .uploadcare--camera__button_type_cancel-record,
+        .uploadcare--camera_status_ready .uploadcare--camera__button_type_retry,
+        .uploadcare--camera_status_ready .uploadcare--camera__button_type_stop-record,
+        .uploadcare--camera_status_ready .uploadcare--camera__not-found,
+        .uploadcare--camera_status_ready .uploadcare--camera__please-allow,
+        .uploadcare--camera_status_recording .uploadcare--camera__button_type_capture,
+        .uploadcare--camera_status_recording .uploadcare--camera__button_type_mirror,
+        .uploadcare--camera_status_recording .uploadcare--camera__button_type_retry,
+        .uploadcare--camera_status_recording .uploadcare--camera__button_type_start-record,
+        .uploadcare--camera_status_recording .uploadcare--camera__not-found,
+        .uploadcare--camera_status_recording .uploadcare--camera__please-allow,
+        .uploadcare--camera_status_requested .uploadcare--camera__button_type_cancel-record,
+        .uploadcare--camera_status_requested .uploadcare--camera__button_type_capture,
+        .uploadcare--camera_status_requested .uploadcare--camera__button_type_mirror,
+        .uploadcare--camera_status_requested .uploadcare--camera__button_type_retry,
+        .uploadcare--camera_status_requested .uploadcare--camera__button_type_start-record,
+        .uploadcare--camera_status_requested .uploadcare--camera__button_type_stop-record,
+        .uploadcare--camera_status_requested .uploadcare--camera__controls,
+        .uploadcare--camera_status_requested .uploadcare--camera__not-found,
+        .uploadcare--camera_status_requested .uploadcare--camera__video-container {
+            display: none
+        }
+
+        .uploadcare--crop-widget>.uploadcare--preview__image {
+            -webkit-filter: brightness(60%);
+            filter: brightness(60%);
+            transform: none
+        }
+
+        .uploadcare--tab {
+            -ms-flex-align: stretch;
+            align-items: stretch;
+            text-align: center
+        }
+
+        .uploadcare--tab,
+        .uploadcare--tab__content {
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -ms-flex-pack: center;
+            justify-content: center
+        }
+
+        .uploadcare--tab__content {
+            -ms-flex-negative: 1;
+            flex-shrink: 1;
+            -ms-flex-align: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 0 20px
+        }
+
+        .uploadcare--tab__header {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            padding: 0 20px;
+            overflow: hidden
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--tab__header {
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-align: center;
+                align-items: center;
+                padding-right: 60px;
+                height: 60px
+            }
+        }
+
+        .uploadcare--tab__iframe {
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            opacity: 0
+        }
+
+        .uploadcare--tab__title {
+            margin-top: 10px;
+            margin-bottom: 10px
+        }
+
+        .uploadcare--tab:not(.uploadcare--tab_current),
+        .uploadcare--tab_name_preview.uploadcare--tab_current~.uploadcare--panel__footer {
+            display: none
+        }
+
+        .uploadcare--tab_remote.uploadcare--tab_current~.uploadcare--panel__footer {
+            margin-top: 0
+        }
+
+        .uploadcare--panel {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            position: relative;
+            box-sizing: border-box;
+            overflow: hidden;
+            width: 100%;
+            height: 500px;
+            border: 1px solid #a4a2a1;
+            border-radius: 6px;
+            background: #fff;
+            color: #353535;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 20px
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--panel {
+                -ms-flex-direction: row;
+                flex-direction: row
+            }
+        }
+
+        .uploadcare--panel__content {
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            overflow: hidden
+        }
+
+        .uploadcare--panel__file-counter {
+            display: inline
+        }
+
+        .uploadcare--panel__footer {
+            padding-top: 15px;
+            background: #fff9d8
+        }
+
+        .uploadcare--panel__icon {
+            box-sizing: border-box;
+            padding: 3px
+        }
+
+        .uploadcare--panel__menu_hidden {
+            display: none
+        }
+
+        .uploadcare--panel__message_hidden {
+            color: #d4d2d2
+        }
+
+        .uploadcare--panel__powered-by {
+            background: #353535;
+            color: hsla(0, 0%, 100%, .5)
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--panel__powered-by {
+                display: none
+            }
+        }
+
+        .uploadcare--tab:not(:nth-child(2)).uploadcare--tab_current~.uploadcare--panel__powered-by {
+            display: none
+        }
+
+        @media (max-width:759px) {
+            .uploadcare--panel_menu-hidden .uploadcare--tab__header {
+                padding: 6px 60px 0;
+                min-height: 60px
+            }
+        }
+
+        .uploadcare--panel:not(.uploadcare--panel_multiple) .uploadcare--panel__footer {
+            display: none
+        }
+
+        .uploadcare--panel_multiple .uploadcare--tab_name_preview {
+            height: 100%
+        }
+
+        .uploadcare--panel_multiple .uploadcare--tab_name_preview .uploadcare--tab__content {
+            padding-left: 0;
+            padding-right: 0
+        }
+
+        .uploadcare--panel_multiple .uploadcare--tab_name_preview .uploadcare--tab__footer {
+            position: relative;
+            margin-top: 0;
+            padding-top: 15px
+        }
+
+        .uploadcare--panel_multiple .uploadcare--tab_name_preview .uploadcare--tab__footer:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 20px;
+            width: calc(100% - 40px);
+            height: 1px;
+            background: #e3e1e1
+        }
+
+        .uploadcare--preview__content {
+            overflow: hidden
+        }
+
+        .uploadcare--preview__content_crop {
+            padding: 10px 20px
+        }
+
+        .uploadcare--dialog {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            -ms-flex-align: stretch;
+            align-items: stretch;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2147483647;
+            box-sizing: border-box;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            color: #353535;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 20px;
+            opacity: 0;
+            transition: opacity .33s cubic-bezier(.05, .7, .25, 1)
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--dialog {
+                -ms-flex-align: center;
+                align-items: center;
+                overflow-y: auto;
+                background: rgba(0, 0, 0, .5)
+            }
+        }
+
+        @media (min-width:760px) and (max-height:559px) {
+            .uploadcare--dialog {
+                padding-top: 30px
+            }
+        }
+
+        @media (min-width:760px) and (min-height:560px) {
+            .uploadcare--dialog {
+                -ms-flex-pack: center;
+                justify-content: center
+            }
+        }
+
+        .uploadcare--dialog__close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 49
+        }
+
+        .uploadcare--dialog__close:focus {
+            outline-offset: -2px
+        }
+
+        .uploadcare--dialog__container {
+            display: -ms-flexbox;
+            display: flex;
+            position: relative;
+            overflow: hidden
+        }
+
+        @media (max-width:759px) {
+            .uploadcare--dialog__container {
+                -ms-flex-positive: 1;
+                flex-grow: 1;
+                height: 100%
+            }
+        }
+
+        @media (min-width:760px) {
+            .uploadcare--dialog__container {
+                width: calc(100% - 60px);
+                max-width: 900px;
+                height: calc(100% - 60px);
+                min-height: 500px;
+                max-height: 660px;
+                border-radius: 6px
+            }
+        }
+
+        @media (min-width:1210px) {
+            .uploadcare--dialog__container {
+                max-width: 1050px
+            }
+        }
+
+        .uploadcare--dialog__panel {
+            height: 100%;
+            border: none;
+            border-radius: 0
+        }
+
+        @media (min-width:1210px) {
+
+            .uploadcare--dialog__panel .uploadcare--menu,
+            .uploadcare--dialog__panel .uploadcare--menu__item {
+                width: 250px
+            }
+        }
+
+        .uploadcare--dialog__powered-by {
+            -ms-flex-negative: 0;
+            flex-shrink: 0
+        }
+
+        @media (max-width:759px) {
+            .uploadcare--dialog__powered-by {
+                display: none
+            }
+        }
+
+        .uploadcare--dialog_status_active {
+            opacity: 1
+        }
+
+        .uploadcare--widget {
+            display: inline-block;
+            vertical-align: baseline
+        }
+
+        .uploadcare--dragging .uploadcare--widget,
+        .uploadcare--widget.uploadcare--dragging {
+            position: relative
+        }
+
+        .uploadcare--widget__button {
+            all: initial;
+            display: inline-block;
+            box-sizing: border-box;
+            margin: 0;
+            padding: .4em 1em;
+            width: auto;
+            min-width: 0;
+            height: auto;
+            min-height: 0;
+            border-radius: 6px;
+            border: none;
+            background: #c3c3c3;
+            color: #fff;
+            cursor: default;
+            text-align: center;
+            white-space: nowrap;
+            font: inherit;
+            line-height: inherit;
+            box-shadow: none;
+            text-shadow: inherit;
+            transition: background .3s
+        }
+
+        .uploadcare--widget__button:focus,
+        .uploadcare--widget__button:hover {
+            background: #b3b3b3;
+            color: #fff;
+            font: inherit;
+            box-shadow: none;
+            text-shadow: inherit
+        }
+
+        .uploadcare--widget__button:focus {
+            outline: 2px solid rgba(21, 124, 252, .5);
+            outline-offset: 1px
+        }
+
+        .uploadcare--widget__button:active {
+            background: #b3b3b3
+        }
+
+        .uploadcare--widget__button:disabled {
+            background: #c3c3c3;
+            color: #fff;
+            cursor: not-allowed
+        }
+
+        .uploadcare--widget__button_type_open {
+            background: #157cfc;
+            color: #fff
+        }
+
+        .uploadcare--widget__button_type_open:focus,
+        .uploadcare--widget__button_type_open:hover {
+            background: #3891ff
+        }
+
+        .uploadcare--widget__button_type_open:active {
+            background: #0969ee
+        }
+
+        .uploadcare--widget__button_type_open:disabled {
+            background: #c3c3c3
+        }
+
+        .uploadcare--widget__dragndrop-area {
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            min-width: 100%;
+            min-height: 100%;
+            margin: 0;
+            padding: calc(.4em - 1.5px) 1em;
+            font: inherit;
+            line-height: inherit;
+            text-align: center;
+            white-space: nowrap;
+            border: 1.5px dashed;
+            border-radius: 6px;
+            background: #e3e1e1;
+            color: #a4a2a1;
+            transition: color .3s;
+            display: none
+        }
+
+        .uploadcare--dragging .uploadcare--widget__dragndrop-area {
+            display: block
+        }
+
+        .uploadcare--widget.uploadcare--dragging .uploadcare--widget__dragndrop-area {
+            color: #157cfc
+        }
+
+        .uploadcare--widget__file-name,
+        .uploadcare--widget__file-size {
+            display: inline
+        }
+
+        .uploadcare--widget__progress {
+            display: inline-block;
+            width: 1.8em;
+            height: 1.8em;
+            margin: 0 .2em 0 0;
+            padding: 0;
+            line-height: 0;
+            vertical-align: middle
+        }
+
+        .uploadcare--widget__text {
+            display: inline-block;
+            box-sizing: border-box;
+            margin-right: .2em;
+            padding: .4em 0;
+            white-space: nowrap
+        }
+
+        .uploadcare--widget:not(.uploadcare--widget_option_clearable).uploadcare--widget_status_error .uploadcare--widget__button_type_remove,
+        .uploadcare--widget:not(.uploadcare--widget_option_clearable).uploadcare--widget_status_loaded .uploadcare--widget__button_type_remove,
+        .uploadcare--widget_option_clearable.uploadcare--widget_status_error .uploadcare--widget__button_type_open,
+        .uploadcare--widget_status_error .uploadcare--widget__button_type_cancel,
+        .uploadcare--widget_status_error .uploadcare--widget__progress,
+        .uploadcare--widget_status_loaded .uploadcare--widget__button_type_cancel,
+        .uploadcare--widget_status_loaded .uploadcare--widget__button_type_open,
+        .uploadcare--widget_status_loaded .uploadcare--widget__progress,
+        .uploadcare--widget_status_ready .uploadcare--widget__button_type_cancel,
+        .uploadcare--widget_status_ready .uploadcare--widget__button_type_remove,
+        .uploadcare--widget_status_ready .uploadcare--widget__progress,
+        .uploadcare--widget_status_ready .uploadcare--widget__text,
+        .uploadcare--widget_status_started .uploadcare--widget__button_type_open,
+        .uploadcare--widget_status_started .uploadcare--widget__button_type_remove {
+            display: none
+        }
+
+        .uploadcare--page {
+            width: auto;
+            min-width: 0;
+            max-width: 100%;
+            height: auto;
+            min-height: 0;
+            max-height: 100%;
+            overflow: hidden
+        }
+
+        .uploadcare--mouse-focused:focus {
+            outline: none
+        }
+    </style>
+    <script src="//www.google.com/jsapi"></script>
+    <script>
+        window.parent.maeExportApis_();
+    </script>
+
+
+    <title>Visual Email Designer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js"></script>
+
+    <script>
+        UPLOADCARE_PUBLIC_KEY = 'dbc5911df0bbcaa561cd';
+        UPLOADCARE_IMAGE_SHRINK = '1024x1024 85%';
+        UPLOADCARE_IMAGES_ONLY = true;
+    </script>
+
+    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.min.js" charset="utf-8"></script>
+
+    <style>
+        .editor {
+            height: 300px;
+        }
+
+        .ql-formats button {
+            min-width: 5px;
+        }
+
+        button+button {
+            margin-left: 0;
+        }
+
+        label {
+            font-size: 12px;
+            line-height: 21px;
+            color: #444;
+        }
+
+        .uploadcare--widget {
+            display: none;
+        }
+
+        .ql-editor p,
+        .ql-editor ol,
+        .ql-editor ul,
+        .ql-editor pre,
+        .ql-editor blockquote,
+        .ql-editor h1,
+        .ql-editor h2,
+        .ql-editor h3,
+        .ql-editor h4,
+        .ql-editor h5,
+        .ql-editor h6 {
+            margin: 12px 0;
+        }
+
+        .ql-editor p:first-child {
+            margin: 0 0 12px;
+        }
+    </style>
+    <!-- <style>
+        @-webkit-keyframes loadingoverlay_animation__rotate_right {
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes loadingoverlay_animation__rotate_right {
+            to {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        
+        @-webkit-keyframes loadingoverlay_animation__rotate_left {
+            to {
+                -webkit-transform: rotate(-360deg);
+                transform: rotate(-360deg);
+            }
+        }
+        
+        @keyframes loadingoverlay_animation__rotate_left {
+            to {
+                -webkit-transform: rotate(-360deg);
+                transform: rotate(-360deg);
+            }
+        }
+        
+        @-webkit-keyframes loadingoverlay_animation__fadein {
+            0% {
+                opacity: 0;
+                -webkit-transform: scale(0.1, 0.1);
+                transform: scale(0.1, 0.1);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(1, 1);
+                transform: scale(1, 1);
+            }
+        }
+        
+        @keyframes loadingoverlay_animation__fadein {
+            0% {
+                opacity: 0;
+                -webkit-transform: scale(0.1, 0.1);
+                transform: scale(0.1, 0.1);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                -webkit-transform: scale(1, 1);
+                transform: scale(1, 1);
+            }
+        }
+        
+        @-webkit-keyframes loadingoverlay_animation__pulse {
+            0% {
+                -webkit-transform: scale(0, 0);
+                transform: scale(0, 0);
+            }
+            50% {
+                -webkit-transform: scale(1, 1);
+                transform: scale(1, 1);
+            }
+            100% {
+                -webkit-transform: scale(0, 0);
+                transform: scale(0, 0);
+            }
+        }
+        
+        @keyframes loadingoverlay_animation__pulse {
+            0% {
+                -webkit-transform: scale(0, 0);
+                transform: scale(0, 0);
+            }
+            50% {
+                -webkit-transform: scale(1, 1);
+                transform: scale(1, 1);
+            }
+            100% {
+                -webkit-transform: scale(0, 0);
+                transform: scale(0, 0);
+            }
+        }
+    </style> -->
+</head>
+
+<body data-gr-ext-disabled="forever"><input type="hidden" data-images-only="true" role="uploadcare-uploader" data-system-dialog="true" data-image-shrink="1024x1024 85%" data-clearable="true">
+    <div class="uploadcare--widget uploadcare--widget_option_clearable uploadcare--widget_status_ready" aria-describedby="uploadcare--widget__text uploadcare--widget__progress" data-status="ready" aria-busy="false">
+        <div class="uploadcare--widget__dragndrop-area">Drop a file here</div>
+        <div id="uploadcare--widget__progress"
+            class="uploadcare--progress uploadcare--progress_type_canvas uploadcare--widget__progress"
+            role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <canvas class="uploadcare--progress__canvas" width="46" height="46"></canvas>
+        </div>
+        <div id="uploadcare--widget__text" class="uploadcare--widget__text" aria-live="polite"></div>
+        <button type="button" class="uploadcare--widget__button uploadcare--widget__button_type_open needsclick">Choose
+            an image</button>
+        <button type="button" class="uploadcare--widget__button uploadcare--widget__button_type_cancel">Cancel</button>
+        <button type="button" class="uploadcare--widget__button uploadcare--widget__button_type_remove">Remove</button>
+        <input type="file" accept="image/*" style="position: fixed; bottom: 0px; opacity: 0; display: none;">
+        <input type="file" accept="image/*" style="position: fixed; bottom: 0px; opacity: 0; display: none;">
+        <input type="file" accept="image/*" style="position: fixed; bottom: 0px; opacity: 0; display: none;">
+    </div>
+    <div class="block form-group">
+        <div class="block">
+            <label for="emailSubject">Email Subject</label>
+            <input name="Email Subject" type="text" id="emailSubject" style="width: 100%">
+        </div>
+        <div class="block">
+            <label>Email Message Body </label>
+            <!-- <div class="ql-toolbar ql-snow">
+            </div> -->
+            <div class="editor ql-container ql-snow">
+                <div class="ql-editor ql-blank" data-gramm="false" contenteditable="true"
+                    data-placeholder="Enter email body here. You can also use HTML tags and {{Column Titles}} for personalized emails.">
+                    <p><br></p>
+                </div>
+                <div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
+                <div class="ql-tooltip ql-hidden">
+                    <a class="ql-preview" rel="noopener noreferrer" target="_blank" href="about:blank"></a><input
+                        type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL">
+                    <a class="ql-action"></a>
+                    <a class="ql-remove"></a>
+                </div>
+            </div>
+        </div>
+        <div class="block">
+            <button onclick="saveConfiguration()" class="blue" id="btn-save">Save</button>
+            <button style="margin-left: 12px; margin-right: 12px" onclick="cancel()" class="gray" id="btn-cancel">
+                Cancel
+            </button>
+            <span id="message">&nbsp;</span>
+            <select class="bottom2" onchange="insertField(this.value)" id="fields" style="float: right">
+                <option value="" selected="" disabled="">Insert Merge Field</option>
+                <option value="{{Email Address}}">Email Address</option>
+                <option value="{{File Attachments}}">File Attachments</option>
+                <option value="{{Scheduled Date}}">Scheduled Date</option>
+                <option value="{{Mail Merge Status}}">Mail Merge Status</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        ! function (e) {
+            "function" == typeof define && define.amd ? define(["jquery"], e) : "object" == typeof module && module.exports ? e(require("jquery")) : e(jQuery)
+        }(function (e, s) {
+            "use strict";
+            var t = {
+                background: "rgba(255, 255, 255, 0.8)",
+                backgroundClass: "",
+                image: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'><circle r='80' cx='500' cy='90'/><circle r='80' cx='500' cy='910'/><circle r='80' cx='90' cy='500'/><circle r='80' cx='910' cy='500'/><circle r='80' cx='212' cy='212'/><circle r='80' cx='788' cy='212'/><circle r='80' cx='212' cy='788'/><circle r='80' cx='788' cy='788'/></svg>",
+                imageAnimation: "2000ms rotate_right",
+                imageAutoResize: !0,
+                imageResizeFactor: 1,
+                imageColor: "#202020",
+                imageClass: "",
+                imageOrder: 1,
+                fontawesome: "",
+                fontawesomeAnimation: "",
+                fontawesomeAutoResize: !0,
+                fontawesomeResizeFactor: 1,
+                fontawesomeColor: "#202020",
+                fontawesomeOrder: 2,
+                custom: "",
+                customAnimation: "",
+                customAutoResize: !0,
+                customResizeFactor: 1,
+                customOrder: 3,
+                text: "",
+                textAnimation: "",
+                textAutoResize: !0,
+                textResizeFactor: .5,
+                textColor: "#202020",
+                textClass: "",
+                textOrder: 4,
+                progress: !1,
+                progressAutoResize: !0,
+                progressResizeFactor: .25,
+                progressColor: "#a0a0a0",
+                progressClass: "",
+                progressOrder: 5,
+                progressFixedPosition: "",
+                progressSpeed: 200,
+                progressMin: 0,
+                progressMax: 100,
+                size: 50,
+                maxSize: 120,
+                minSize: 20,
+                direction: "column",
+                fade: !0,
+                resizeInterval: 50,
+                zIndex: 2147483647
+            },
+                a = {
+                    overlay: {
+                        "box-sizing": "border-box",
+                        position: "relative",
+                        display: "flex",
+                        "flex-wrap": "nowrap",
+                        "align-items": "center",
+                        "justify-content": "space-around"
+                    },
+                    element: {
+                        "box-sizing": "border-box",
+                        overflow: "visible",
+                        flex: "0 0 auto",
+                        display: "flex",
+                        "justify-content": "center",
+                        "align-items": "center"
+                    },
+                    element_svg: {
+                        width: "100%",
+                        height: "100%"
+                    },
+                    progress_fixed: {
+                        position: "absolute",
+                        left: "0",
+                        width: "100%"
+                    },
+                    progress_wrapper: {
+                        position: "absolute",
+                        top: "0",
+                        left: "0",
+                        width: "100%",
+                        height: "100%"
+                    },
+                    progress_bar: {
+                        position: "absolute",
+                        left: "0"
+                    }
+                },
+                o = {
+                    count: 0,
+                    container: s,
+                    settings: s,
+                    wholePage: s,
+                    resizeIntervalId: s,
+                    text: s,
+                    progress: s
+                },
+                r = {
+                    animations: ["rotate_right", "rotate_left", "fadein", "pulse"],
+                    progressPosition: ["top", "bottom"]
+                },
+                i = {
+                    animations: {
+                        name: "rotate_right",
+                        time: "2000ms"
+                    },
+                    fade: [400, 200]
+                };
+
+            function n(s, t) {
+                s = e(s), t.size = y(t.size), t.maxSize = parseInt(t.maxSize, 10) || 0, t.minSize = parseInt(t.minSize, 10) || 0, t.resizeInterval = parseInt(t.resizeInterval, 10) || 0;
+                var r = f(s),
+                    n = p(s);
+                if (!1 === n) {
+                    if ((n = e.extend({}, o)).container = s, n.wholePage = s.is("body"), r = e("<div>", {
+                        class: "loadingoverlay"
+                    }).css(a.overlay).css("flex-direction", "row" === t.direction.toLowerCase() ? "row" : "column"), t.backgroundClass ? r.addClass(t.backgroundClass) : r.css("background", t.background), n.wholePage && r.css({
+                        position: "fixed",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%"
+                    }), void 0 !== t.zIndex && r.css("z-index", t.zIndex), t.image) {
+                        e.isArray(t.imageColor) ? 0 === t.imageColor.length ? t.imageColor = !1 : 1 === t.imageColor.length ? t.imageColor = {
+                            fill: t.imageColor[0]
+                        } : t.imageColor = {
+                            fill: t.imageColor[0],
+                            stroke: t.imageColor[1]
+                        } : t.imageColor && (t.imageColor = {
+                            fill: t.imageColor
+                        });
+                        var l = u(r, t.imageOrder, t.imageAutoResize, t.imageResizeFactor, t.imageAnimation);
+                        "<svg" === t.image.slice(0, 4).toLowerCase() && "</svg>" === t.image.slice(-6).toLowerCase() ? (l.append(t.image), l.children().css(a.element_svg), !t.imageClass && t.imageColor && l.find("*").css(t.imageColor)) : ".svg" === t.image.slice(-4).toLowerCase() || "data:image/svg" === t.image.slice(0, 14).toLowerCase() ? e.ajax({
+                            url: t.image,
+                            type: "GET",
+                            dataType: "html",
+                            global: !1
+                        }).done(function (e) {
+                            l.html(e), l.children().css(a.element_svg), !t.imageClass && t.imageColor && l.find("*").css(t.imageColor)
+                        }) : l.css({
+                            "background-image": "url(" + t.image + ")",
+                            "background-position": "center",
+                            "background-repeat": "no-repeat",
+                            "background-size": "cover"
+                        }), t.imageClass && l.addClass(t.imageClass)
+                    }
+                    if (t.fontawesome) {
+                        l = u(r, t.fontawesomeOrder, t.fontawesomeAutoResize, t.fontawesomeResizeFactor, t.fontawesomeAnimation).addClass("loadingoverlay_fa");
+                        e("<div>", {
+                            class: t.fontawesome
+                        }).appendTo(l), t.fontawesomeColor && l.css("color", t.fontawesomeColor)
+                    }
+                    if (t.custom) l = u(r, t.customOrder, t.customAutoResize, t.customResizeFactor, t.customAnimation).append(t.custom);
+                    if (t.text && (n.text = u(r, t.textOrder, t.textAutoResize, t.textResizeFactor, t.textAnimation).addClass("loadingoverlay_text").text(t.text), t.textClass ? n.text.addClass(t.textClass) : t.textColor && n.text.css("color", t.textColor)), t.progress) {
+                        l = u(r, t.progressOrder, t.progressAutoResize, t.progressResizeFactor, !1).addClass("loadingoverlay_progress");
+                        var g = e("<div>").css(a.progress_wrapper).appendTo(l);
+                        n.progress = {
+                            bar: e("<div>").css(a.progress_bar).appendTo(g),
+                            fixed: !1,
+                            margin: 0,
+                            min: parseFloat(t.progressMin),
+                            max: parseFloat(t.progressMax),
+                            speed: parseInt(t.progressSpeed, 10)
+                        };
+                        var c = (t.progressFixedPosition + "").replace(/\s\s+/g, " ").toLowerCase().split(" ");
+                        2 === c.length && h(c[0]) ? (n.progress.fixed = c[0], n.progress.margin = y(c[1])) : 2 === c.length && h(c[1]) ? (n.progress.fixed = c[1], n.progress.margin = y(c[0])) : 1 === c.length && h(c[0]) && (n.progress.fixed = c[0], n.progress.margin = 0), "top" === n.progress.fixed ? l.css(a.progress_fixed).css("top", n.progress.margin ? n.progress.margin.value + (n.progress.margin.fixed ? n.progress.margin.units : "%") : 0) : "bottom" === n.progress.fixed && l.css(a.progress_fixed).css("top", "auto"), t.progressClass ? n.progress.bar.addClass(t.progressClass) : t.progressColor && n.progress.bar.css("background", t.progressColor)
+                    }
+                    t.fade ? !0 === t.fade ? t.fade = i.fade : "string" == typeof t.fade || "number" == typeof t.fade ? t.fade = [t.fade, t.fade] : e.isArray(t.fade) && t.fade.length < 2 && (t.fade = [t.fade[0], t.fade[0]]) : t.fade = [0, 0], t.fade = [parseInt(t.fade[0], 10), parseInt(t.fade[1], 10)], n.settings = t, r.data("loadingoverlay_data", n), s.data("loadingoverlay", r), r.fadeTo(0, .01).appendTo("body"), m(s, !0), t.resizeInterval > 0 && (n.resizeIntervalId = setInterval(function () {
+                        m(s, !1)
+                    }, t.resizeInterval)), r.fadeTo(t.fade[0], 1)
+                }
+                n.count++
+            }
+
+            function l(s, t) {
+                var a = f(s = e(s)),
+                    o = p(s);
+                !1 !== o && (o.count--, (t || o.count <= 0) && (o.resizeIntervalId && clearInterval(o.resizeIntervalId), a.fadeOut(o.settings.fade[1], function () {
+                    e(this).remove()
+                }), s.removeData("loadingoverlay")))
+            }
+
+            function g(s) {
+                m(e(s), !0)
+            }
+
+            function c(s, t) {
+                var a = p(s = e(s));
+                !1 !== a && a.text && (!1 === t ? a.text.hide() : a.text.show().text(t))
+            }
+
+            function d(s, t) {
+                var a = p(s = e(s));
+                if (!1 !== a && a.progress)
+                    if (!1 === t) a.progress.bar.hide();
+                    else {
+                        var o = 100 * ((parseFloat(t) || 0) - a.progress.min) / (a.progress.max - a.progress.min);
+                        o < 0 && (o = 0), o > 100 && (o = 100), a.progress.bar.show().animate({
+                            width: o + "%"
+                        }, a.progress.speed)
+                    }
+            }
+
+            function m(s, t) {
+                var a = f(s),
+                    o = p(s);
+                if (!1 !== o) {
+                    if (!o.wholePage) {
+                        var r = "fixed" === s.css("position"),
+                            i = r ? s[0].getBoundingClientRect() : s.offset();
+                        a.css({
+                            position: r ? "fixed" : "absolute",
+                            top: i.top + parseInt(s.css("border-top-width"), 10),
+                            left: i.left + parseInt(s.css("border-left-width"), 10),
+                            width: s.innerWidth(),
+                            height: s.innerHeight()
+                        })
+                    }
+                    if (o.settings.size) {
+                        var n = o.wholePage ? e(window) : s,
+                            l = o.settings.size.value;
+                        o.settings.size.fixed || (l = Math.min(n.innerWidth(), n.innerHeight()) * l / 100, o.settings.maxSize && l > o.settings.maxSize && (l = o.settings.maxSize), o.settings.minSize && l < o.settings.minSize && (l = o.settings.minSize)), a.children(".loadingoverlay_element").each(function () {
+                            var s = e(this);
+                            if (t || s.data("loadingoverlay_autoresize")) {
+                                var a = s.data("loadingoverlay_resizefactor");
+                                s.hasClass("loadingoverlay_fa") || s.hasClass("loadingoverlay_text") ? s.css("font-size", l * a + o.settings.size.units) : s.hasClass("loadingoverlay_progress") ? (o.progress.bar.css("height", l * a + o.settings.size.units), o.progress.fixed ? "bottom" === o.progress.fixed && s.css("bottom", o.progress.margin ? o.progress.margin.value + (o.progress.margin.fixed ? o.progress.margin.units : "%") : 0).css("bottom", "+=" + l * a + o.settings.size.units) : o.progress.bar.css("top", s.position().top).css("top", "-=" + l * a * .5 + o.settings.size.units)) : s.css({
+                                    width: l * a + o.settings.size.units,
+                                    height: l * a + o.settings.size.units
+                                })
+                            }
+                        })
+                    }
+                }
+            }
+
+            function f(e) {
+                return e.data("loadingoverlay")
+            }
+
+            function p(t) {
+                var a = f(t),
+                    o = void 0 === a ? s : a.data("loadingoverlay_data");
+                return void 0 === o ? (e(".loadingoverlay").each(function () {
+                    var s = e(this),
+                        t = s.data("loadingoverlay_data");
+                    document.body.contains(t.container[0]) || (t.resizeIntervalId && clearInterval(t.resizeIntervalId), s.remove())
+                }), !1) : (a.toggle(t.is(":visible")), o)
+            }
+
+            function u(s, t, o, r, n) {
+                var l = e("<div>", {
+                    class: "loadingoverlay_element",
+                    css: {
+                        order: t
+                    }
+                }).css(a.element).data({
+                    loadingoverlay_autoresize: o,
+                    loadingoverlay_resizefactor: r
+                }).appendTo(s);
+                if (!0 === n && (n = i.animations.time + " " + i.animations.name), "string" == typeof n) {
+                    var g, c, d = n.replace(/\s\s+/g, " ").toLowerCase().split(" ");
+                    2 === d.length && v(d[0]) && x(d[1]) ? (g = d[1], c = d[0]) : 2 === d.length && v(d[1]) && x(d[0]) ? (g = d[0], c = d[1]) : 1 === d.length && v(d[0]) ? (g = i.animations.name, c = d[0]) : 1 === d.length && x(d[0]) && (g = d[0], c = i.animations.time), l.css({
+                        "animation-name": "loadingoverlay_animation__" + g,
+                        "animation-duration": c,
+                        "animation-timing-function": "linear",
+                        "animation-iteration-count": "infinite"
+                    })
+                }
+                return l
+            }
+
+            function v(e) {
+                return !isNaN(parseFloat(e)) && ("s" === e.slice(-1) || "ms" === e.slice(-2))
+            }
+
+            function x(e) {
+                return r.animations.indexOf(e) > -1
+            }
+
+            function h(e) {
+                return r.progressPosition.indexOf(e) > -1
+            }
+
+            function y(e) {
+                return !(!e || e < 0) && ("string" == typeof e && ["vmin", "vmax"].indexOf(e.slice(-4)) > -1 ? {
+                    fixed: !0,
+                    units: e.slice(-4),
+                    value: e.slice(0, -4)
+                } : "string" == typeof e && ["rem"].indexOf(e.slice(-3)) > -1 ? {
+                    fixed: !0,
+                    units: e.slice(-3),
+                    value: e.slice(0, -3)
+                } : "string" == typeof e && ["px", "em", "cm", "mm", "in", "pt", "pc", "vh", "vw"].indexOf(e.slice(-2)) > -1 ? {
+                    fixed: !0,
+                    units: e.slice(-2),
+                    value: e.slice(0, -2)
+                } : {
+                                fixed: !1,
+                                units: "px",
+                                value: parseFloat(e)
+                            })
+            }
+            e.LoadingOverlaySetup = function (s) {
+                e.extend(!0, t, s)
+            }, e.LoadingOverlay = function (s, a) {
+                switch (s.toLowerCase()) {
+                    case "show":
+                        n("body", e.extend(!0, {}, t, a));
+                        break;
+                    case "hide":
+                        l("body", a);
+                        break;
+                    case "resize":
+                        g("body");
+                        break;
+                    case "text":
+                        c("body", a);
+                        break;
+                    case "progress":
+                        d("body", a)
+                }
+            }, e.fn.LoadingOverlay = function (s, a) {
+                switch (s.toLowerCase()) {
+                    case "show":
+                        var o = e.extend(!0, {}, t, a);
+                        return this.each(function () {
+                            n(this, o)
+                        });
+                    case "hide":
+                        return this.each(function () {
+                            l(this, a)
+                        });
+                    case "resize":
+                        return this.each(function () {
+                            g(this)
+                        });
+                    case "text":
+                        return this.each(function () {
+                            c(this, a)
+                        });
+                    case "progress":
+                        return this.each(function () {
+                            d(this, a)
+                        })
+                }
+            }, e(function () {
+                e("head").append(["<style>", "@-webkit-keyframes loadingoverlay_animation__rotate_right {", "to {", "-webkit-transform : rotate(360deg);", "transform : rotate(360deg);", "}", "}", "@keyframes loadingoverlay_animation__rotate_right {", "to {", "-webkit-transform : rotate(360deg);", "transform : rotate(360deg);", "}", "}", "@-webkit-keyframes loadingoverlay_animation__rotate_left {", "to {", "-webkit-transform : rotate(-360deg);", "transform : rotate(-360deg);", "}", "}", "@keyframes loadingoverlay_animation__rotate_left {", "to {", "-webkit-transform : rotate(-360deg);", "transform : rotate(-360deg);", "}", "}", "@-webkit-keyframes loadingoverlay_animation__fadein {", "0% {", "opacity   : 0;", "-webkit-transform : scale(0.1, 0.1);", "transform : scale(0.1, 0.1);", "}", "50% {", "opacity   : 1;", "}", "100% {", "opacity   : 0;", "-webkit-transform : scale(1, 1);", "transform : scale(1, 1);", "}", "}", "@keyframes loadingoverlay_animation__fadein {", "0% {", "opacity   : 0;", "-webkit-transform : scale(0.1, 0.1);", "transform : scale(0.1, 0.1);", "}", "50% {", "opacity   : 1;", "}", "100% {", "opacity   : 0;", "-webkit-transform : scale(1, 1);", "transform : scale(1, 1);", "}", "}", "@-webkit-keyframes loadingoverlay_animation__pulse {", "0% {", "-webkit-transform : scale(0, 0);", "transform : scale(0, 0);", "}", "50% {", "-webkit-transform : scale(1, 1);", "transform : scale(1, 1);", "}", "100% {", "-webkit-transform : scale(0, 0);", "transform : scale(0, 0);", "}", "}", "@keyframes loadingoverlay_animation__pulse {", "0% {", "-webkit-transform : scale(0, 0);", "transform : scale(0, 0);", "}", "50% {", "-webkit-transform : scale(1, 1);", "transform : scale(1, 1);", "}", "100% {", "-webkit-transform : scale(0, 0);", "transform : scale(0, 0);", "}", "}", "</style>"].join(" "))
+            })
+        });
+    </script>
+
+    <script>
+        var toolbarOptions = [
+            ['bold', 'italic', 'underline'],
+            ['link', 'image'],
+            [{
+                color: [],
+            }, {
+                background: [],
+            },],
+            [{
+                list: 'ordered',
+            }, {
+                list: 'bullet',
+            },],
+            [{
+                header: [1, 2, 3, 4, false],
+            },],
+            [{
+                align: [],
+            },],
+            [{
+                direction: 'rtl',
+            },],
+            ['code-block', 'clean'],
+        ];
+
+        var quill = new Quill('.editor', {
+            modules: {
+                toolbar: toolbarOptions,
+            },
+            placeholder: 'Enter email body here. You can also use HTML tags and {{Column Titles}} for personalized emails.',
+            theme: 'snow',
+        });
+
+        var toolbar = quill.getModule('toolbar');
+        toolbar.addHandler('image', showPicker);
+
+        function imageHandler2() {
+            var range = this.quill.getSelection();
+            var value = prompt('What is the image URL');
+            if (value) this.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER);
+        }
+
+        var Delta = Quill.import('delta');
+
+        quill.clipboard.addMatcher(Node.TEXT_NODE, function (node, delta) {
+            var regex = /https?:\/\/[^\s]+/g;
+            if (typeof node.data !== 'string') return;
+            var matches = node.data.match(regex);
+            if (matches && matches.length > 0) {
+                var ops = [];
+                var str = node.data;
+                matches.forEach(function (match) {
+                    var split = str.split(match);
+                    var beforeLink = split.shift();
+                    if (match.match(/\.(png|jpg|jpeg|gif)$/) != null) {
+                        ops.push({
+                            insert: beforeLink,
+                        });
+                        ops.push({
+                            insert: {
+                                image: match,
+                            },
+                            attributes: {
+                                link: match,
+                            },
+                        });
+                        str = split.join(match);
+                    } else {
+                        ops.push({
+                            insert: beforeLink,
+                        });
+                        ops.push({
+                            insert: match,
+                            attributes: {
+                                link: match,
+                            },
+                        });
+                        str = split.join(match);
+                    }
+                });
+                ops.push({
+                    insert: str,
+                });
+                delta.ops = ops;
+            }
+            return delta;
+        });
+
+        if (window.uploadcare) {
+            var uploadWidget = uploadcare.Widget('[role=uploadcare-uploader]');
+            uploadWidget.onChange(function (file) {
+                if (file) {
+                    startWait();
+                    file
+                        .done(function (info) {
+                            quill.insertEmbed(quill.getSelection().index, 'image', info.cdnUrl, Quill.sources.USER);
+                            stopWait();
+                        })
+                        .fail(function (error, info) {
+                            stopWait();
+                        });
+                }
+            });
+        }
+
+        function showPicker() {
+            if (uploadWidget) uploadWidget.openDialog(null);
+        }
+
+        function insertField(val) {
+            var range = quill.getSelection(!quill.hasFocus());
+            quill.insertText(range.index, val + ' ', '', '', null, 'api');
+        }
+
+        function close() {
+            google.script.host.close();
+        }
+
+        function cancel() {
+            close();
+        }
+
+        function saveConfiguration() {
+            if (quill.root.textContent.replace(/\s/g, '') === '') {
+                showMessage('Please enter the email body', true);
+                return;
+            }
+            var data = {
+                emailBody: convertHtmlToPlain(quill.root.innerHTML),
+                emailSubject: document.getElementById('emailSubject').value,
+            };
+            if (data.emailSubject.trim() === '') {
+                showMessage('Please specify the email subject', true);
+                return;
+            }
+            startWait();
+            google.script.run.withSuccessHandler().saveEmailTemplate(data);
+        }
+        function convertHtmlToPlain(html){
+          var temp = document.createElement("div");
+          temp.innerHTML = html;
+        return temp.textContent || temp.innerText || "";
+        }
+
+        function configurationSaved(e) {
+            stopWait();
+            if (e !== 'OK') {
+                showMessage(e, true);
+            } else {
+                close();
+            }
+        }
+
+        function showMessage(message, error) {
+            var elem = document.getElementById('message');
+            if (error) message = "<span class='error'>" + message + '</span>';
+            elem.innerHTML = message;
+        }
+
+        function startWait() {
+            $.LoadingOverlay('show');
+        }
+
+        function stopWait() {
+            setTimeout(function () {
+                $.LoadingOverlay('hide');
+            }, 1000);
+        }
+    </script>
+
+    <script>
+        function loadConfiguration() {
+            document.getElementById('emailSubject').value = '';
+            quill.root.innerHTML = '';
+            var fields = 'Email Address|File Attachments|Scheduled Date|Mail Merge Status'.split('|');
+            var $mergeFields = $('#fields');
+            for (var f = 0; f < fields.length; f++) {
+                $mergeFields.append(
+                    $('<option>', {
+                        value: '{{' + fields[f].substr(0, 50) + '}}',
+                        text: fields[f],
+                    })
+                );
+            }
+        }
+
+        loadConfiguration();
+    </script>
+
+</body>
+
+</html>

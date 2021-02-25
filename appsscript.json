@@ -1,0 +1,44 @@
+{
+  "timeZone": "Asia/Kolkata",
+  "dependencies": {
+    "enabledAdvancedServices": [{
+      "userSymbol": "Gmail",
+      "serviceId": "gmail",
+      "version": "v1"
+    }, {
+      "userSymbol": "Sheets",
+      "serviceId": "sheets",
+      "version": "v4"
+    }, {
+      "userSymbol": "Analytics",
+      "serviceId": "analytics",
+      "version": "v3"
+    }]
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "sheets": {
+    "macros": [{
+      "menuName": "Insert new sheet",
+      "functionName": "Insertnewsheet"
+    }, {
+      "menuName": "Untitled Macro1",
+      "functionName": "UntitledMacro1"
+    }, {
+      "menuName": "Untitled Macro 2",
+      "functionName": "UntitledMacro2"
+    }, {
+      "menuName": "Untitled Macro",
+      "functionName": "UntitledMacro"
+    }, {
+      "menuName": "Untitled Macro  ",
+      "functionName": "UntitledMacro1"
+    }, {
+      "menuName": "Untitled Macro 2",
+      "functionName": "UntitledMacro2"
+    }, {
+      "menuName": "Untitled Macro",
+      "functionName": "UntitledMacro"
+    }]
+  }
+}

@@ -1,6 +1,7 @@
+
 // Created By Abhinav Jain 
-// https://github.com/abhinav-22-tech/Automatic-Bulk-Email-Sender
-// https://github.com/abhinav-22-tech/Email-track-webhook
+
+
 
 const RECIPIENT_COL  = "Recipient";
 const EMAIL_SENT_COL = "Email Sent";
@@ -18,6 +19,7 @@ function onOpen() {
 }
 
 function sidebar() {
+
   var html = HtmlService.createHtmlOutputFromFile("join").setTitle("Mail Merge");
   var ui = SpreadsheetApp.getUi();
   SpreadsheetApp.getActiveSpreadsheet().toast("Wait a minute", "Waiting");
@@ -25,6 +27,17 @@ function sidebar() {
   ui.showSidebar(html);
   Template();
 }
+
+function visualeditor() {
+  var html = HtmlService.createHtmlOutputFromFile("visual").setWidth(800)
+      .setHeight(562);
+  var ui = SpreadsheetApp.getUi();
+  SpreadsheetApp.getActiveSpreadsheet().toast("Wait a minute", "Waiting");
+
+  SpreadsheetApp.getActiveSpreadsheet().toast("Almost done");
+  ui.showModalDialog(html, "Desgin the content for your email");
+}
+
 
 function createTemplate() {
   var spreadsheet = SpreadsheetApp.getActive();
@@ -135,7 +148,7 @@ function startTimeTrigger() {
 //     .everyMinutes(1)
 //     .create();
 //  Logger.log("One");
-  SpreadsheetApp.getActiveSpreadsheet().toast("Your emails are a schedule for every day.","Schedule Email");
+  SpreadsheetApp.getActiveSpreadsheet().toast("Your emails are a schedule for every day for a year.","Schedule Email");
 
 };
 // Created By Abhinav Jain 
@@ -173,7 +186,9 @@ function getTrackingGIF() {
   Logger.log(email,subject);
   // Create a url based on the Email Tracker Webhook web app's URL and attaching two URL paramaters 
   // that will pass the Subject and the To line of the email to the web app. Replace [WEBAPP URL] below with the URL of your web app
-  var imgURL = "Enter your email track web hook URL"
+
+//  var imgURL = "https://script.google.com/macros/s/AKfycbxpAxLtsIhtBuJqbvhTDWe02N3AQNmApCa0gaz40Qo0k-rBtjbY/exec"
+  var imgURL = "https://script.google.com/macros/s/AKfycbwQtPFF4Q8tkNkHDhN11O-IjTenlETHvmO8RyhA8Q/exec"
     // encode the Subject to assure that it will be passed properly as a part of a URL 
     + "?esubject=" + encodeURIComponent(subject.replace(/'/g, ""))
     // encode the To line to assure that it will be passed properly as a part of a URL
@@ -187,20 +202,18 @@ function getDraft(subjectLine, sheet=SpreadsheetApp.getActiveSheet()) {
 //  var ui = DocumentApp.getUi();
   SpreadsheetApp.getActiveSpreadsheet().toast("Wait a minute", "Waiting");
   if (!subjectLine){
-    subjectLine = Browser.inputBox("Mail Merge", 
-                                      "Enter subject line of the Gmail " +
-                                      "draft message you would like to mail merge with:",
-                                      Browser.Buttons.OK_CANCEL);
-//    var html = HtmlService.createHtmlOutputFromFile('draft');
-//    SpreadsheetApp.getUi() 
-//       .showModalDialog(html, 'Dialog title');
-
-    if (subjectLine === "cancel" || subjectLine == ""){
-    // if no subject line finish up
-      return; }
+//    subjectLine = Browser.inputBox("Mail Merge", 
+//                                      "Enter subject line of the Gmail " +
+//                                      "draft message you would like to mail merge with:",
+//                                      Browser.Buttons.OK_CANCEL);
+    subjectLine = gmaildraft();
+    
+//    if (subjectLine === "cancel" || subjectLine == ""){
+//    // if no subject line finish up
+//      return; }
   }
-  PropertiesService.getScriptProperties().setProperty('subject', subjectLine);
-  return;
+//  PropertiesService.getScriptProperties().setProperty('subject', subjectLine);
+//  return;
 }
  
 function sendEmails(subjectLine, sheet=SpreadsheetApp.getActiveSheet()) {
@@ -285,16 +298,16 @@ function sendEmails(subjectLine, sheet=SpreadsheetApp.getActiveSheet()) {
             // Link image to html body
             const body = getTrackingGIF();
             Logger.log(msgObj);
-//        GmailApp.sendEmail(row[RECIPIENT_COL], msgObj.subject, msgObj.text, {
-//          htmlBody: msgObj.html + body,
-//          // bcc: 'a.bbc@email.com',
-//          // cc: 'a.cc@email.com',
-//          // from: 'an.alias@email.com',
-//          // name: 'name of the sender',
-//          // replyTo: 'a.reply@email.com',
-//          // noReply: true, // if the email should be sent from a generic no-reply email address (not available to gmail.com users)
-//          attachments: emailTemplate.attachments
-//        });
+        GmailApp.sendEmail(row[RECIPIENT_COL], msgObj.subject, msgObj.text, {
+          htmlBody: msgObj.html + body,
+          // bcc: 'a.bbc@email.com',
+          // cc: 'a.cc@email.com',
+          // from: 'an.alias@email.com',
+          // name: 'name of the sender',
+          // replyTo: 'a.reply@email.com',
+          // noReply: true, // if the email should be sent from a generic no-reply email address (not available to gmail.com users)
+          attachments: emailTemplate.attachments
+        });
         // modify cell to record email sent date
             SpreadsheetApp.getActiveSpreadsheet().toast("Sending mail");
             out.push([new Date()]);
@@ -386,7 +399,7 @@ function sendEmails(subjectLine, sheet=SpreadsheetApp.getActiveSheet()) {
 
 function emailValidation()
 { 
-  var apikey = 'Enter your API Key(available at gammalogic.com) '
+  var apikey = 'da33077c93b5444286a91dfb5111628e'
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getActiveSheet();
   count = sheet.getLastRow();
@@ -489,5 +502,30 @@ var options =
 var result = UrlFetchApp.fetch(url, options);
 SpreadsheetApp.getActiveSpreadsheet().toast("Almost Done");
 return result
+}
+
+
+function saveEmailTemplate(data) {
+
+  var forScope = GmailApp.getInboxUnreadCount(); // needed for auth scope
+ 
+  var raw = "dddddd";
+
+  var draftBody = Utilities.base64Encode(raw, Utilities.Charset.UTF_8).replace(/\//g,'_').replace(/\+/g,'-');
+
+  var params = {
+    method      : "post",
+    contentType : "application/json",
+    headers     : {"Authorization": "Bearer " + ScriptApp.getOAuthToken()},
+    muteHttpExceptions:true,
+    payload:JSON.stringify({
+      "message": {
+        "raw": draftBody
+      }
+    })
+  };
+
+  var resp = UrlFetchApp.fetch("https://www.googleapis.com/gmail/v1/users/me/drafts", params);
+  Logger.log(resp.getContentText());
 }
 // Created By Abhinav Jain 
