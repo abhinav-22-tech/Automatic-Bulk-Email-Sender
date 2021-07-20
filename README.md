@@ -102,3 +102,9 @@ The project as mention,” Automatic bulk email sender” is mainly designed to 
 21.	Check track report in the summary sheet
 
  ![alt text](https://github.com/abhinav-22-tech/Automatic-Bulk-Email-Sender/blob/master/Images/22.png?raw=true)
+ 
+ 
+ 
+ ## License
+
+MIT, see [LICENSE](https://github.com/abhinav-22-tech/Automatic-Bulk-Email-Sender/blob/master/LICENSE) for details.
